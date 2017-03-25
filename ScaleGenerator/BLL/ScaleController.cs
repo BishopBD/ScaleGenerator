@@ -20,15 +20,16 @@ namespace ScaleGenerator.BLL
         {
             var scale = new Scale();
             scale.I = key;
-            scale.ii = mN.getOneWholeNoteUp(key);
-            scale.iii = mN.getOneWholeNoteUp(scale.ii);
-            scale.IV = mN.getOneHalfNoteUp(scale.iii);
-            scale.V = mN.getOneWholeNoteUp(scale.IV);
-            scale.vi = mN.getOneWholeNoteUp(scale.V);
-            scale.vii = mN.getOneWholeNoteUp(scale.vi);
+            scale.ii = GetYWholeStepsUpFromX(key, 1);
+            scale.iii = GetYWholeStepsUpFromX(scale.ii, 1);
+            scale.IV = GetYHalfStepsUpFromX(scale.iii, 1);
+            scale.V = GetYWholeStepsUpFromX(scale.IV, 1);
+            scale.vi = GetYWholeStepsUpFromX(scale.V, 1);
+            scale.vii = GetYHalfStepsUpFromX(scale.vi, 1);
 
             return scale;
         }
+
         private string GetYHalfStepsUpFromX(string x, int y)
         {
             string halfStepUp = mN.getOneHalfNoteUp(x);
@@ -43,6 +44,22 @@ namespace ScaleGenerator.BLL
             }
             throw new ArgumentOutOfRangeException("!(y<1)");
         }
+
+        private string GetYWholeStepsUpFromX(string x, int y)
+        {
+            string wholeStepUp = mN.getOneWholeNoteUp(x);
+            if (y == 1)
+            {
+                return wholeStepUp;
+            }
+            else
+            {
+                y--;
+                GetYWholeStepsUpFromX(wholeStepUp, y);
+            }
+            throw new ArgumentOutOfRangeException("!(y<1)");
+        }
+
         public class Scale
         {
             private string[] _scale = new string[7];
