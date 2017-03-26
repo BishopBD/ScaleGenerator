@@ -30,6 +30,20 @@ namespace ScaleGenerator.BLL
             return scale;
         }
 
+        public Scale getMinorScale(string key)
+        {
+            var scale = new Scale();
+            scale.First = key;
+            scale.Second = GetYWholeStepsUpFromX(key, 1);
+            scale.Third = GetYHalfStepsUpFromX(scale.Second, 1);
+            scale.Fourth = GetYWholeStepsUpFromX(scale.Third, 1);
+            scale.Fifth = GetYWholeStepsUpFromX(scale.Fourth, 1);
+            scale.Sixth = GetYHalfStepsUpFromX(scale.Fifth, 1);
+            scale.Seventh = GetYWholeStepsUpFromX(scale.Sixth, 1);
+
+            return scale;
+        }
+
         private string GetYHalfStepsUpFromX(string x, int y)
         {
             string halfStepUp = mN.getOneHalfNoteUp(x);
