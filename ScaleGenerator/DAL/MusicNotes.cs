@@ -24,14 +24,7 @@ namespace ScaleGenerator.DAL
             //Gets the next note above it
             int indexOfStartingNote = musicalNotes.IndexOf(startingNote);
             int indexOfNoteAHalfStepUp = indexOfStartingNote + 1;
-            if (indexOfNoteAHalfStepUp <= numberOfNotes)
-            {
-                return musicalNotes[indexOfNoteAHalfStepUp];
-            }
-            else
-            {
-                return musicalNotes[0];
-            }
+            return (indexOfNoteAHalfStepUp == numberOfNotes) ? musicalNotes[indexOfNoteAHalfStepUp] : musicalNotes[0];            
         }
     }
 }
