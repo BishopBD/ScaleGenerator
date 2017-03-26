@@ -13,18 +13,31 @@ namespace ScaleGenerator.DAL
         {
             numberOfNotes = musicalNotes.Count;
         }
-
-        public string getOneWholeNoteUp(string startingNote)
-        {
-            return getOneHalfNoteUp(getOneHalfNoteUp(startingNote));
-        }
-
+                
         public string getOneHalfNoteUp(string startingNote)
         {
             //Gets the next note above it
             int indexOfStartingNote = musicalNotes.IndexOf(startingNote);
             int indexOfNoteAHalfStepUp = indexOfStartingNote + 1;
             return (indexOfNoteAHalfStepUp == numberOfNotes) ? musicalNotes[indexOfNoteAHalfStepUp] : musicalNotes[0];            
+        }
+
+        public string getOneHalfNoteDown(string startingNote)
+        {
+            //Gets the next note below it
+            int indexOfStartingNote = musicalNotes.IndexOf(startingNote);
+            int indexOfNoteAHalfStepDown = indexOfStartingNote - 1;
+            return (indexOfNoteAHalfStepDown < 0) ? musicalNotes[indexOfNoteAHalfStepDown] : musicalNotes[numberOfNotes -1];
+        }
+
+        public string getOneWholeNoteUp(string startingNote)
+        {
+            return getOneHalfNoteUp(getOneHalfNoteUp(startingNote));
+        }
+
+        public string getOneWholeNoteDown(string startingNote)
+        {
+            return getOneHalfNoteDown(getOneHalfNoteDown(startingNote));
         }
     }
 }
