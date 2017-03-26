@@ -19,13 +19,13 @@ namespace ScaleGenerator.BLL
         public Scale getMajorScale(string key)
         {
             var scale = new Scale();
-            scale.I = key;
-            scale.ii = GetYWholeStepsUpFromX(key, 1);
-            scale.iii = GetYWholeStepsUpFromX(scale.ii, 1);
-            scale.IV = GetYHalfStepsUpFromX(scale.iii, 1);
-            scale.V = GetYWholeStepsUpFromX(scale.IV, 1);
-            scale.vi = GetYWholeStepsUpFromX(scale.V, 1);
-            scale.vii = GetYHalfStepsUpFromX(scale.vi, 1);
+            scale.First = key;
+            scale.Second = GetYWholeStepsUpFromX(key, 1);
+            scale.Third = GetYWholeStepsUpFromX(scale.Second, 1);
+            scale.Fourth = GetYHalfStepsUpFromX(scale.Third, 1);
+            scale.Fifth = GetYWholeStepsUpFromX(scale.Fourth, 1);
+            scale.Sixth = GetYWholeStepsUpFromX(scale.Fifth, 1);
+            scale.Seventh = GetYHalfStepsUpFromX(scale.Sixth, 1);
 
             return scale;
         }
@@ -64,7 +64,7 @@ namespace ScaleGenerator.BLL
         {
             private string[] _scale = new string[7];
 
-            public string I
+            public string First
             {
                 get
                 {
@@ -75,7 +75,7 @@ namespace ScaleGenerator.BLL
                     scaleArray[0] = value;
                 }
             }
-            public string ii
+            public string Second
             {
                 get
                 {
@@ -86,7 +86,7 @@ namespace ScaleGenerator.BLL
                     scaleArray[1] = value;
                 }
             }
-            public string iii
+            public string Third
             {
                 get
                 {
@@ -97,7 +97,7 @@ namespace ScaleGenerator.BLL
                     scaleArray[2] = value;
                 }
             }
-            public string IV
+            public string Fourth
             {
                 get
                 {
@@ -108,7 +108,7 @@ namespace ScaleGenerator.BLL
                     scaleArray[3] = value;
                 }
             }
-            public string V
+            public string Fifth
             {
                 get
                 {
@@ -119,7 +119,7 @@ namespace ScaleGenerator.BLL
                     scaleArray[4] = value;
                 }
             }
-            public string vi
+            public string Sixth
             {
                 get
                 {
@@ -130,7 +130,7 @@ namespace ScaleGenerator.BLL
                     scaleArray[5] = value;
                 }
             }
-            public string vii
+            public string Seventh
             {
                 get
                 {
